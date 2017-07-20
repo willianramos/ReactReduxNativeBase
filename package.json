@@ -1,0 +1,24 @@
+{
+  "name": "ReduxingProject",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node node_modules/react-native/local-cli/cli.js start",
+    "test": "jest"
+  },
+  "dependencies": {
+    "native-base": "2.1.4",
+    "react": "16.0.0-alpha.12",
+    "react-native": "0.45.1",
+    "react-redux": "^5.0.2",
+    "redux": "^3.6.0"
+  },
+  "devDependencies": {
+    "babel-eslint": "^6.1.2",
+    "babel-jest": "17.0.0",
+    "babel-preset-react-native": "1.9.0"
+  },
+  "jest": {
+    "preset": "react-native"
+  }
+}
