@@ -1,15 +1,21 @@
 import { ADD_ITEM, DELETE_ITEM } from '../constants';
+import {RealmManager} from '../realmManager'
 
-export default function itemsReducer(state = [], action) {
+
+const realm = new RealmManager()
+const persisted = realm.fetchObjects('Item');
+
+export default function itemsReducer(state = persisted, action) {
   switch (action.type) {
     case ADD_ITEM:
-      return [
-        ...state, 
-        action.item
-      ];
+      realm.addObject(action.item, 'Item')
+
+      return realm.fetchObjects('Item');
       
     case DELETE_ITEM:
-      return state.filter( p => p !== action.item);
+      realm.deleteObject(action.item)
+
+      return realm.fetchObjects('Item');
 
     default:
       return state;

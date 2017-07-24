@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { addItemAction, deleteItemAction } from './actions';
 
-import { Container, Header, Title, Content, Card, CardItem, Body, Text, Button, Input, List, ListItem } from 'native-base';
+import { Container, Header, Title, Content, Card, CardItem, Body, Text, Button, Right, Icon, Input, List, ListItem } from 'native-base';
 
 import { StyleSheet } from 'react-native';
 
@@ -11,9 +11,13 @@ class App extends React.Component {
     inputValue: ''
   }
 
+  componentDidMount() {
+
+  }
+
   addItemPressed = () => {
     if (this.state.inputValue === '') return;
-
+    
     this.props.dispatchAddItem({
       text: this.state.inputValue,
       checked: false
@@ -59,7 +63,14 @@ class App extends React.Component {
           <List>{
             this.props.items.map((item, index) => (
               <ListItem key={index}>
-                <Text>{item.text}</Text>
+                <Body>
+                  <Text>{item.text}</Text>
+                </Body>
+                <Right>
+                  <Button transparent danger onPress={() => this.deleteItemPressed(item)}>
+                    <Icon name='trash' />
+                  </Button>
+                </Right>
               </ListItem>
             ))
           }</List>
